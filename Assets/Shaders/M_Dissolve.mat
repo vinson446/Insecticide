@@ -124,6 +124,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Vector1_237d5660dfa04ef5ba924c661676adef: 0
     - Vector1_3fead6604da54efe816dfe401967639b: 0.01
     - Vector1_fd63c0aa23c2479683d1e29ad0a52be2: 30
     - _AORemapMax: 1
@@ -146,6 +147,7 @@ Material:
     - _CullMode: 2
     - _CullModeForward: 2
     - _Cutoff: 0.5
+    - _DTime: 0
     - _DepthOffsetEnable: 0
     - _DetailAlbedoScale: 1
     - _DetailNormalScale: 1
