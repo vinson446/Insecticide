@@ -7,10 +7,6 @@ public class Shotgun : Gun
     private new void Awake()
     {
         base.Awake();
-
-        Ammo = 60;
-        Damage = 60;
-        FireRate = 1;
     }
 
     public override void Shoot()

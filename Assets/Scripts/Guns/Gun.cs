@@ -12,14 +12,6 @@ public abstract class Gun : MonoBehaviour
     [SerializeField] float fireRate;
     public float FireRate { get => fireRate; set => fireRate = value; }
 
-    [Header("References")]
-    [SerializeField] GameObject bulletObj;
-    protected GameObject BulletObj => bulletObj;
-    [SerializeField] Transform bulletSpawnTrans;
-    protected Transform BulletSpawnTrans { get => bulletSpawnTrans; set => bulletSpawnTrans = value; }
-    [SerializeField] int bulletSpeed;
-    protected int BulletSpeed { get => bulletSpeed; set => bulletSpeed = value; }
-
     // references
     protected PlayerCameraController playerCamController;
 

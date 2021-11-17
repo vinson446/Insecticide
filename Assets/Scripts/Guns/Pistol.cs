@@ -7,10 +7,6 @@ public class Pistol : Gun
     private new void Awake()
     {
         base.Awake();
-
-        Ammo = -1;
-        Damage = 3;
-        FireRate = 3;
     }
 
     public override void Shoot()

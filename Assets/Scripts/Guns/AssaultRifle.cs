@@ -7,10 +7,6 @@ public class AssaultRifle : Gun
     private new void Awake()
     {
         base.Awake();
-
-        Ammo = 360;
-        Damage = 6;
-        FireRate = 6;
     }
 
     public override void Shoot()

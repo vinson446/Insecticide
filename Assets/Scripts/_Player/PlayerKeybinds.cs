@@ -14,6 +14,8 @@ public class PlayerKeybinds : MonoBehaviour
 
     [Header("Keybinds - Combat/Interaction")]
     [SerializeField] KeyCode shootKey = KeyCode.Mouse0;
+    [SerializeField] KeyCode zoomKey = KeyCode.Mouse1;
+    public KeyCode ZoomKey => zoomKey;
     public KeyCode ShootKey => shootKey;
     [SerializeField] KeyCode weap1Key = KeyCode.Alpha1;
     public KeyCode Weap1Key => weap1Key;
@@ -21,8 +23,6 @@ public class PlayerKeybinds : MonoBehaviour
     public KeyCode Weap2Key => weap2Key;
     [SerializeField] KeyCode weap3Key = KeyCode.Alpha3;
     public KeyCode Weap3Key => weap3Key;
-    [SerializeField] KeyCode zoomKey = KeyCode.Mouse1;
-    public KeyCode ZoomKey => zoomKey;
 
     [SerializeField] KeyCode interactKey = KeyCode.E;
     public KeyCode InteractKey => interactKey;
