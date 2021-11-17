@@ -122,6 +122,8 @@ MonoBehaviour:
   inZoom: 0
   timeToZoom: 0.15
   zoomFOV: 45
+  playerCam: {fileID: 2487932025700945821}
+  gunCam: {fileID: 2487932025383137515}
 --- !u!114 &2487932025214786904
 MonoBehaviour:
   m_ObjectHideFlags: 0

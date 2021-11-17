@@ -23,13 +23,13 @@ public class PlayerCameraController : MonoBehaviour
 
     // local references
     PlayerKeybinds playerKeybinds;
-    Camera playerCam;
+    [SerializeField] Camera playerCam;
     public Camera PlayerCam => playerCam;
+    [SerializeField] Camera gunCam;
 
     private void Awake()
     {
         playerKeybinds = GetComponent<PlayerKeybinds>();
-        playerCam = GetComponentInChildren<Camera>();
 
         defaultFOV = playerCam.fieldOfView;
 
@@ -78,11 +78,13 @@ public class PlayerCameraController : MonoBehaviour
         while (timeElapsed < timeToZoom)
         {
             playerCam.fieldOfView = Mathf.Lerp(startingFOV, targetFOV, timeElapsed / timeToZoom);
+            gunCam.fieldOfView = Mathf.Lerp(startingFOV, targetFOV, timeElapsed / timeToZoom);
             timeElapsed += Time.deltaTime;
             yield return null;
         }
 
         playerCam.fieldOfView = targetFOV;
+        gunCam.fieldOfView = targetFOV;
 
         zoomCoroutine = null;
     }
