@@ -6,6 +6,7 @@ public class PlayerMovementController : MonoBehaviour
 {
     // functional checks
     bool isSprinting => Input.GetKey(playerKeybinds.SprintKey);
+    public bool IsSprinting => isSprinting;
     bool canJumpNow => charController.isGrounded && Input.GetKey(playerKeybinds.JumpKey);
     bool canCrouchNow => (!inCrouchAnim && charController.isGrounded && (Input.GetKeyDown(playerKeybinds.CrouchKey)
         || isCrouching && (Input.GetKeyUp(playerKeybinds.CrouchKey))));
@@ -54,14 +55,14 @@ public class PlayerMovementController : MonoBehaviour
     }
 
     // local references
-    PlayerKeybinds playerKeybinds;
     PlayerCameraController playerCamController;
+    PlayerKeybinds playerKeybinds;
     CharacterController charController;
 
     private void Awake()
     {
-        playerKeybinds = GetComponent<PlayerKeybinds>();
         playerCamController = GetComponent<PlayerCameraController>();
+        playerKeybinds = GetComponent<PlayerKeybinds>();
         charController = GetComponent<CharacterController>();
     }
 

@@ -19,4 +19,24 @@ public class Shotgun : Gun
                 damageable.TakeDamage(Damage);
         }
     }
+
+    protected override void PlayGunFireAnimation()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    protected override void PlayGunFireVFX()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    protected override void PlayGunFireSFX()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    protected override void PlayNoAmmoSFX()
+    {
+        throw new System.NotImplementedException();
+    }
 }

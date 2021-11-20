@@ -12,6 +12,12 @@ public abstract class Gun : MonoBehaviour
     [SerializeField] float fireRate;
     public float FireRate { get => fireRate; set => fireRate = value; }
 
+    [Header("Effects")]
+    [SerializeField] GameObject gunFireVFX;
+    [SerializeField] AudioClip gunFireSFX;
+
+    [SerializeField] AudioClip noAmmoSFX;
+
     // references
     protected PlayerCameraController playerCamController;
 
@@ -21,4 +27,12 @@ public abstract class Gun : MonoBehaviour
     }
 
     public abstract void Shoot();
+
+    protected abstract void PlayGunFireAnimation();
+
+    protected abstract void PlayGunFireVFX();
+
+    protected abstract void PlayGunFireSFX();
+
+    protected abstract void PlayNoAmmoSFX();
 }

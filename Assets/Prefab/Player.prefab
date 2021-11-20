@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2487932025214786906}
   - component: {fileID: 2487932025214786907}
   - component: {fileID: 2487932025214786904}
+  - component: {fileID: 4301140004384748206}
   - component: {fileID: 2487932025214786910}
   - component: {fileID: 2487932025214786911}
   - component: {fileID: 2487932025214786896}
@@ -69,9 +70,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentSpeed: 0
-  walkSpeed: 4
-  sprintSpeed: 6
-  crouchSpeed: 2
+  walkSpeed: 10
+  sprintSpeed: 20
+  crouchSpeed: 5
   slideSpeed: 8
   jumpForce: 12
   gravity: 24
@@ -145,6 +146,18 @@ MonoBehaviour:
   weap2Key: 50
   weap3Key: 51
   interactKey: 101
+--- !u!114 &4301140004384748206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2487932025214786897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07b0ef5c474e57d4c89a83b227a626af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!33 &2487932025214786910
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -617,6 +630,25 @@ MonoBehaviour:
       data1: 0
       data2: 0
   defaultFrameSettings: 0
+--- !u!95 &1156769840
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4730948621018536173}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4383f3a03f948f746aeea7a3c75f5768, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &7669556594604338227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -632,6 +664,25 @@ MonoBehaviour:
   ammo: 360
   damage: 6
   fireRate: 6
+--- !u!95 &923957899
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5588092352634963077}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ae11a483e532a5b40a0cf262eb240d83, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &181438904570469772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -647,6 +698,25 @@ MonoBehaviour:
   ammo: 60
   damage: 36
   fireRate: 1
+--- !u!95 &671891615
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6092826844812485687}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5a0fc7ce1b1856e4cab0c4676ed57da9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &7017354656204912258
 MonoBehaviour:
   m_ObjectHideFlags: 0

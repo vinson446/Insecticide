@@ -15,6 +15,7 @@ public class PlayerActionController : MonoBehaviour
     public float FireRate { get => fireRate; set => fireRate = value; }
 
     float nextTimeToShoot;
+    // add weapon switch animation if there's time
     Coroutine switchWeapCoroutine;
 
     [Header("Debugger - Interaction")]
@@ -29,18 +30,25 @@ public class PlayerActionController : MonoBehaviour
     bool inFocus;
 
     // local references
-    PlayerKeybinds playerKeybinds;
     PlayerCameraController playerCamController;
+    PlayerKeybinds playerKeybinds;
 
     void Awake()
     {
-        playerKeybinds = GetComponent<PlayerKeybinds>();
         playerCamController = GetComponent<PlayerCameraController>();
+        playerKeybinds = GetComponent<PlayerKeybinds>();
 
         interactRayPoint = new Vector3(0.5f, 0.5f, 0);
 
         currentWeap = weapList[0];
         SetWeaponStats();
+    }
+
+    void SetWeaponStats()
+    {
+        ammo = currentWeap.Ammo;
+        damage = currentWeap.Damage;
+        fireRate = currentWeap.FireRate;
     }
 
     // Update is called once per frame
@@ -94,13 +102,6 @@ public class PlayerActionController : MonoBehaviour
 
         currentWeap.gameObject.SetActive(true);
         SetWeaponStats();
-    }
-
-    void SetWeaponStats()
-    {
-        ammo = currentWeap.Ammo;
-        damage = currentWeap.Damage;
-        fireRate = currentWeap.FireRate;
     }
 
     void HandleShooting()
