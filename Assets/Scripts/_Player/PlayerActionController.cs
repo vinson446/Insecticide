@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class PlayerActionController : MonoBehaviour
 {
@@ -33,6 +34,9 @@ public class PlayerActionController : MonoBehaviour
     PlayerCameraController playerCamController;
     PlayerKeybinds playerKeybinds;
 
+    //placeholder
+    [SerializeField] VisualEffect _vfx;
+
     void Awake()
     {
         playerCamController = GetComponent<PlayerCameraController>();
@@ -61,6 +65,11 @@ public class PlayerActionController : MonoBehaviour
         // interaction
         HandleInteractFocus();
         HandleInteractInput();
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            _vfx.Play();
+        }
     }
 
     #region Combat
