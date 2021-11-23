@@ -17,6 +17,11 @@ public class AssaultRifle : Gun
 
             if (damageable != null)
                 damageable.TakeDamage(Damage);
+
+            if (hitVFX != null)
+                Instantiate(hitVFX, hit.transform.position, hit.transform.rotation);
+
+            CurrentAmmo -= 1;
         }
     }
 

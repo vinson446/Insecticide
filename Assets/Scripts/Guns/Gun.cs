@@ -5,18 +5,18 @@ using UnityEngine;
 public abstract class Gun : MonoBehaviour
 {
     [Header("Combat Parameters")]
-    [SerializeField] int ammo;
-    public int Ammo { get => ammo; set => ammo = value; }
+    [SerializeField] int currentAmmo;
+    public int CurrentAmmo { get => currentAmmo; set => currentAmmo = value; }
+    [SerializeField] int maxAmmo;
+    public int MaxAmmo { get => maxAmmo; set => maxAmmo = value; }
     [SerializeField] int damage;
     public int Damage { get => damage; set => damage = value; }
     [SerializeField] float fireRate;
     public float FireRate { get => fireRate; set => fireRate = value; }
 
     [Header("Effects")]
-    [SerializeField] GameObject gunFireVFX;
-    [SerializeField] AudioClip gunFireSFX;
-
-    [SerializeField] AudioClip noAmmoSFX;
+    [SerializeField] protected GameObject hitVFX;
+    [SerializeField] protected AudioClip hitSFX;
 
     // references
     protected PlayerCameraController playerCamController;

@@ -17,6 +17,9 @@ public class Pistol : Gun
 
             if (damageable != null)
                 damageable.TakeDamage(Damage);
+
+            if (hitVFX != null)
+                Instantiate(hitVFX, hit.transform.position, hit.transform.rotation);
         }
     }
 
