@@ -35,7 +35,8 @@ public class PlayerActionController : MonoBehaviour
     PlayerKeybinds playerKeybinds;
 
     //placeholder
-    [SerializeField] VisualEffect _vfx;
+    [SerializeField] VisualEffect _vfxMuzzleFlash;
+    [SerializeField] VisualEffect _vfxHit;
 
     void Awake()
     {
@@ -68,7 +69,8 @@ public class PlayerActionController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            _vfx.Play();
+            _vfxMuzzleFlash.Play();
+            _vfxHit.Play();
         }
     }
 
