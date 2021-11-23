@@ -2959,7 +2959,7 @@ VisualEffect:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2998996329587839741}
   m_Enabled: 1
-  m_Asset: {fileID: 8926484042661614526, guid: b69872d98c944da468c4ba04a98424f9, type: 3}
+  m_Asset: {fileID: 8926484042661614526, guid: 76c8809d8725dc34aa5cfb27a0c7a4c3, type: 3}
   m_InitialEventName: OnPlay
   m_InitialEventNameOverriden: 0
   m_StartSeed: 0
@@ -3007,7 +3007,6 @@ VFXRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -5339,7 +5338,7 @@ VisualEffect:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5955885430019445645}
   m_Enabled: 1
-  m_Asset: {fileID: 8926484042661614526, guid: b69872d98c944da468c4ba04a98424f9, type: 3}
+  m_Asset: {fileID: 8926484042661614526, guid: fc6f4c0be67cc6147ada7ec1ec3e5fee, type: 3}
   m_InitialEventName: OnPlay
   m_InitialEventNameOverriden: 0
   m_StartSeed: 0
@@ -5387,7 +5386,6 @@ VFXRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -6311,9 +6309,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6765060851707695158}
-  - component: {fileID: 2795569735966782701}
-  - component: {fileID: 5626365491100665230}
   - component: {fileID: 4719618831385323020}
+  - component: {fileID: 5626365491100665230}
+  - component: {fileID: 2795569735966782701}
   m_Layer: 0
   m_Name: gun_shotgun
   m_TagString: Untagged
@@ -6368,6 +6366,43 @@ Transform:
   m_Father: {fileID: 3571880244089609537}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!114 &4719618831385323020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6809914569389608607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 380cbc9a9b360754c879f2263e39cf9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentAmmo: 60
+  maxAmmo: 60
+  damage: 30
+  fireRate: 1
+  hitVFX: {fileID: 0}
+  hitSFX: {fileID: 0}
+--- !u!95 &5626365491100665230
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6809914569389608607}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ae11a483e532a5b40a0cf262eb240d83, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!82 &2795569735966782701
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6464,43 +6499,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!95 &5626365491100665230
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6809914569389608607}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ae11a483e532a5b40a0cf262eb240d83, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &4719618831385323020
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6809914569389608607}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 380cbc9a9b360754c879f2263e39cf9b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentAmmo: 60
-  maxAmmo: 60
-  damage: 30
-  fireRate: 1
-  hitVFX: {fileID: 0}
-  hitSFX: {fileID: 0}
 --- !u!1 &6843872439227110600
 GameObject:
   m_ObjectHideFlags: 0
@@ -6915,9 +6913,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2757223348980024612}
-  - component: {fileID: 8184487525436915554}
-  - component: {fileID: 4409222171830645139}
   - component: {fileID: 2256365101292906493}
+  - component: {fileID: 4409222171830645139}
+  - component: {fileID: 8184487525436915554}
   m_Layer: 0
   m_Name: gun_rifle
   m_TagString: Untagged
@@ -6977,6 +6975,43 @@ Transform:
   m_Father: {fileID: 3571880244089609537}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!114 &2256365101292906493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7418475827309266869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 282f45dbdc3d6da49aad0ba9bb940f9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentAmmo: 360
+  maxAmmo: 360
+  damage: 3
+  fireRate: 6
+  hitVFX: {fileID: 0}
+  hitSFX: {fileID: 8300000, guid: 9ba91d96192151a42a2b66cf458ca1f9, type: 3}
+--- !u!95 &4409222171830645139
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7418475827309266869}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4383f3a03f948f746aeea7a3c75f5768, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!82 &8184487525436915554
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7073,43 +7108,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!95 &4409222171830645139
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7418475827309266869}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4383f3a03f948f746aeea7a3c75f5768, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2256365101292906493
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7418475827309266869}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 282f45dbdc3d6da49aad0ba9bb940f9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentAmmo: 360
-  maxAmmo: 360
-  damage: 3
-  fireRate: 6
-  hitVFX: {fileID: 0}
-  hitSFX: {fileID: 8300000, guid: 9ba91d96192151a42a2b66cf458ca1f9, type: 3}
 --- !u!1 &7430483692363316612
 GameObject:
   m_ObjectHideFlags: 0
@@ -7200,9 +7198,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3567172057368454328}
-  - component: {fileID: 6073455570376563725}
-  - component: {fileID: 2301547640623401600}
   - component: {fileID: 961196644424267538}
+  - component: {fileID: 2301547640623401600}
+  - component: {fileID: 6073455570376563725}
   m_Layer: 0
   m_Name: gun_pistol
   m_TagString: Untagged
@@ -7246,6 +7244,43 @@ Transform:
   m_Father: {fileID: 3571880244089609537}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!114 &961196644424267538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7458792037584847447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52f7cece0c476e24593d50e4b4525d85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentAmmo: 9999
+  maxAmmo: 9999
+  damage: 1
+  fireRate: 3
+  hitVFX: {fileID: 0}
+  hitSFX: {fileID: 0}
+--- !u!95 &2301547640623401600
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7458792037584847447}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5a0fc7ce1b1856e4cab0c4676ed57da9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!82 &6073455570376563725
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7342,43 +7377,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!95 &2301547640623401600
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7458792037584847447}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5a0fc7ce1b1856e4cab0c4676ed57da9, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &961196644424267538
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7458792037584847447}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52f7cece0c476e24593d50e4b4525d85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentAmmo: 9999
-  maxAmmo: 9999
-  damage: 1
-  fireRate: 3
-  hitVFX: {fileID: 0}
-  hitSFX: {fileID: 0}
 --- !u!1 &7505886979958144942
 GameObject:
   m_ObjectHideFlags: 0

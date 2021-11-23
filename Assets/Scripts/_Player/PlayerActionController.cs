@@ -89,6 +89,9 @@ public class PlayerActionController : MonoBehaviour
             weapIndex = 0;
 
             playerAnimController.SetWeaponIndex(0);
+
+            currentWeap.gameObject.SetActive(true);
+            SetWeaponStats();
         }
         else if (Input.GetKeyDown(playerKeybinds.Weap2Key))
         {
@@ -103,6 +106,9 @@ public class PlayerActionController : MonoBehaviour
             weapIndex = 1;
 
             playerAnimController.SetWeaponIndex(1);
+
+            currentWeap.gameObject.SetActive(true);
+            SetWeaponStats();
         }
         else if (Input.GetKeyDown(playerKeybinds.Weap3Key))
         {
@@ -117,10 +123,10 @@ public class PlayerActionController : MonoBehaviour
             weapIndex = 2;
 
             playerAnimController.SetWeaponIndex(2);
-        }
 
-        currentWeap.gameObject.SetActive(true);
-        SetWeaponStats();
+            currentWeap.gameObject.SetActive(true);
+            SetWeaponStats();
+        }
     }
 
     void HandleShooting()

@@ -19,7 +19,7 @@ public class Pistol : Gun
                 damageable.TakeDamage(Damage);
 
             if (hitVFX != null)
-                Instantiate(hitVFX, hit.transform.position, hit.transform.rotation);
+                Instantiate(hitVFX, hit.point, Quaternion.identity);
         }
     }
 
