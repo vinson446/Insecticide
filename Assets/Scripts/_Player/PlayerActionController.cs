@@ -7,7 +7,10 @@ public class PlayerActionController : MonoBehaviour
 {
     [Header("Debugger - Combat")]
     [SerializeField] Gun currentWeap;
+    public Gun CurrentWeap => currentWeap;
     [SerializeField] Gun[] weapList;
+    int weapIndex;
+    public int WeapIndex => weapIndex;
     [SerializeField] float ammo;
     public float Ammo { get => ammo; set => ammo = value; }
     [SerializeField] float damage;
@@ -31,27 +34,29 @@ public class PlayerActionController : MonoBehaviour
     bool inFocus;
 
     // local references
+    Player player;
     PlayerCameraController playerCamController;
+    PlayerAnimationController playerAnimController;
     PlayerKeybinds playerKeybinds;
-
-    //placeholder
-    [SerializeField] VisualEffect _vfxMuzzleFlash;
-    [SerializeField] VisualEffect _vfxHit;
 
     void Awake()
     {
+        player = GetComponent<Player>();
         playerCamController = GetComponent<PlayerCameraController>();
+        playerAnimController = GetComponent<PlayerAnimationController>();
         playerKeybinds = GetComponent<PlayerKeybinds>();
 
         interactRayPoint = new Vector3(0.5f, 0.5f, 0);
 
         currentWeap = weapList[0];
+        weapIndex = 0;
+
         SetWeaponStats();
     }
 
     void SetWeaponStats()
     {
-        ammo = currentWeap.Ammo;
+        ammo = currentWeap.CurrentAmmo;
         damage = currentWeap.Damage;
         fireRate = currentWeap.FireRate;
     }
@@ -66,12 +71,6 @@ public class PlayerActionController : MonoBehaviour
         // interaction
         HandleInteractFocus();
         HandleInteractInput();
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            _vfxMuzzleFlash.Play();
-            _vfxHit.Play();
-        }
     }
 
     #region Combat
@@ -87,6 +86,9 @@ public class PlayerActionController : MonoBehaviour
 
             currentWeap.gameObject.SetActive(false);
             currentWeap = weapList[0];
+            weapIndex = 0;
+
+            playerAnimController.SetWeaponIndex(0);
         }
         else if (Input.GetKeyDown(playerKeybinds.Weap2Key))
         {
@@ -98,6 +100,9 @@ public class PlayerActionController : MonoBehaviour
 
             currentWeap.gameObject.SetActive(false);
             currentWeap = weapList[1];
+            weapIndex = 1;
+
+            playerAnimController.SetWeaponIndex(1);
         }
         else if (Input.GetKeyDown(playerKeybinds.Weap3Key))
         {
@@ -109,6 +114,9 @@ public class PlayerActionController : MonoBehaviour
 
             currentWeap.gameObject.SetActive(false);
             currentWeap = weapList[2];
+            weapIndex = 2;
+
+            playerAnimController.SetWeaponIndex(2);
         }
 
         currentWeap.gameObject.SetActive(true);
@@ -119,9 +127,22 @@ public class PlayerActionController : MonoBehaviour
     {
         if (Input.GetKey(playerKeybinds.ShootKey) && Time.time >= nextTimeToShoot)
         {
+            if (currentWeap.CurrentAmmo <= 0)
+            {
+                player.PlayNoAmmoSFX();
+                return;
+            }
+
             nextTimeToShoot = Time.time + 1 / fireRate;
             currentWeap.Shoot();
+
+            playerAnimController.PlayShootingAnimation();
+
+            player.PlayShootEffects(weapIndex);
         }
+
+        if (Input.GetKeyUp(playerKeybinds.ShootKey))
+            playerAnimController.InShootAnim = false;
     }
     #endregion
 
