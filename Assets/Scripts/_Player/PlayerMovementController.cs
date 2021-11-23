@@ -56,12 +56,14 @@ public class PlayerMovementController : MonoBehaviour
 
     // local references
     PlayerCameraController playerCamController;
+    PlayerAnimationController playerAnimController;
     PlayerKeybinds playerKeybinds;
     CharacterController charController;
 
     private void Awake()
     {
         playerCamController = GetComponent<PlayerCameraController>();
+        playerAnimController = GetComponent<PlayerAnimationController>();
         playerKeybinds = GetComponent<PlayerKeybinds>();
         charController = GetComponent<CharacterController>();
     }
@@ -84,6 +86,14 @@ public class PlayerMovementController : MonoBehaviour
         float moveDirY = moveDir.y;
         moveDir = (transform.TransformDirection(Vector3.forward) * moveInput.x) + (transform.TransformDirection(Vector3.right) * moveInput.y);
         moveDir.y = moveDirY;
+
+        // animation
+        if (moveInput == Vector2.zero)
+            playerAnimController.PlayIdleAnimation();
+        else if (currentSpeed == sprintSpeed)
+            playerAnimController.PlayRunningAnimation();
+        else if (currentSpeed == walkSpeed)
+            playerAnimController.PlayWalkingAnimation();
     }
 
     void HandleJump()
