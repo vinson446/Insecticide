@@ -22,6 +22,7 @@ public class PlayerActionController : MonoBehaviour
     // add weapon switch animation if there's time
     Coroutine switchWeapCoroutine;
 
+    /*
     [Header("Debugger - Interaction")]
     [SerializeField] Interactable interactable;
 
@@ -32,12 +33,15 @@ public class PlayerActionController : MonoBehaviour
     Vector3 interactRayPoint;
     Interactable currentInteractable;
     bool inFocus;
+    */
 
     // local references
     Player player;
     PlayerCameraController playerCamController;
     PlayerAnimationController playerAnimController;
     PlayerKeybinds playerKeybinds;
+
+    GameUIManager gameUIManager;
 
     void Awake()
     {
@@ -46,7 +50,9 @@ public class PlayerActionController : MonoBehaviour
         playerAnimController = GetComponent<PlayerAnimationController>();
         playerKeybinds = GetComponent<PlayerKeybinds>();
 
-        interactRayPoint = new Vector3(0.5f, 0.5f, 0);
+        gameUIManager = FindObjectOfType<GameUIManager>();
+
+        // interactRayPoint = new Vector3(0.5f, 0.5f, 0);
 
         currentWeap = weapList[0];
         weapIndex = 0;
@@ -69,8 +75,10 @@ public class PlayerActionController : MonoBehaviour
         HandleSwitchingWeapon();
 
         // interaction
+        /*
         HandleInteractFocus();
         HandleInteractInput();
+        */
     }
 
     #region Combat
@@ -92,6 +100,8 @@ public class PlayerActionController : MonoBehaviour
 
             currentWeap.gameObject.SetActive(true);
             SetWeaponStats();
+
+            gameUIManager.UpdateAmmo();
         }
         else if (Input.GetKeyDown(playerKeybinds.Weap2Key))
         {
@@ -109,6 +119,8 @@ public class PlayerActionController : MonoBehaviour
 
             currentWeap.gameObject.SetActive(true);
             SetWeaponStats();
+
+            gameUIManager.UpdateAmmo();
         }
         else if (Input.GetKeyDown(playerKeybinds.Weap3Key))
         {
@@ -126,25 +138,36 @@ public class PlayerActionController : MonoBehaviour
 
             currentWeap.gameObject.SetActive(true);
             SetWeaponStats();
+
+            gameUIManager.UpdateAmmo();
         }
     }
 
     void HandleShooting()
     {
+        if (Input.GetKeyDown(playerKeybinds.ShootKey) && currentWeap.CurrentAmmo <= 0)
+        {
+            player.PlayNoAmmoSFX();
+            return;
+        }
+
         if (Input.GetKey(playerKeybinds.ShootKey) && Time.time >= nextTimeToShoot)
         {
             if (currentWeap.CurrentAmmo <= 0)
             {
-                player.PlayNoAmmoSFX();
+                playerAnimController.InShootAnim = false;
                 return;
             }
 
             nextTimeToShoot = Time.time + 1 / fireRate;
             currentWeap.Shoot();
+            ammo -= 1;
 
             playerAnimController.PlayShootingAnimation();
 
             player.PlayShootEffects(weapIndex);
+
+            gameUIManager.UpdateAmmo();
         }
 
         if (Input.GetKeyUp(playerKeybinds.ShootKey))
@@ -152,6 +175,7 @@ public class PlayerActionController : MonoBehaviour
     }
     #endregion
 
+    /*
     #region Interact
     void HandleInteractFocus()
     {
@@ -186,4 +210,5 @@ public class PlayerActionController : MonoBehaviour
         }
     }
     #endregion
+    */
 }

@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameUIManager : MonoBehaviour
 {
     [SerializeField] Slider healthSlider;
     [SerializeField] Slider staminaSlider;
+    [SerializeField] Text ammoText;
 
     Player player;
 
@@ -22,7 +24,10 @@ public class GameUIManager : MonoBehaviour
 
         staminaSlider.maxValue = player.MaxStamina;
         staminaSlider.value = player.CurrentStamina;
+
+        UpdateAmmo();
     }
+
 
     public void UpdateHealthSlider()
     {
@@ -32,5 +37,10 @@ public class GameUIManager : MonoBehaviour
     public void UpdateStaminaSlider()
     {
         staminaSlider.value = player.CurrentStamina;
+    }
+
+    public void UpdateAmmo()
+    {
+        ammoText.text = player.PlayerActionController.CurrentWeap.CurrentAmmo.ToString();
     }
 }

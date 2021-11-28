@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovementController : MonoBehaviour
 {
     // functional checks
-    bool isSprinting => Input.GetKey(playerKeybinds.SprintKey);
+    bool isSprinting => Input.GetKey(playerKeybinds.SprintKey) && player.CurrentStamina > 0;
     public bool IsSprinting => isSprinting;
     bool canJumpNow => charController.isGrounded && Input.GetKey(playerKeybinds.JumpKey);
     bool canCrouchNow => (!inCrouchAnim && charController.isGrounded && (Input.GetKeyDown(playerKeybinds.CrouchKey)
@@ -55,6 +55,7 @@ public class PlayerMovementController : MonoBehaviour
     }
 
     // local references
+    Player player;
     PlayerCameraController playerCamController;
     PlayerAnimationController playerAnimController;
     PlayerKeybinds playerKeybinds;
@@ -62,6 +63,7 @@ public class PlayerMovementController : MonoBehaviour
 
     private void Awake()
     {
+        player = GetComponent<Player>();
         playerCamController = GetComponent<PlayerCameraController>();
         playerAnimController = GetComponent<PlayerAnimationController>();
         playerKeybinds = GetComponent<PlayerKeybinds>();
@@ -73,7 +75,7 @@ public class PlayerMovementController : MonoBehaviour
     {
         HandleMovementInput();
         HandleJump();
-        HandleCrouch();
+        // HandleCrouch();
             
         ApplyFinalMovement();
     }

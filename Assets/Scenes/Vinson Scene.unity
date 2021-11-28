@@ -3574,38 +3574,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NEW PLAYER
       objectReference: {fileID: 0}
-    - target: {fileID: 961196644424267538, guid: 1f79e0b05f4510348a3feec3097c5cd7, type: 3}
-      propertyPath: hitSFX
-      value: 
-      objectReference: {fileID: 8300000, guid: 9ba91d96192151a42a2b66cf458ca1f9, type: 3}
-    - target: {fileID: 961196644424267538, guid: 1f79e0b05f4510348a3feec3097c5cd7, type: 3}
-      propertyPath: hitVFX
-      value: 
-      objectReference: {fileID: 1096644957810217638, guid: 09e6a634439e5cd41937bdccc79eb711, type: 3}
-    - target: {fileID: 2256365101292906493, guid: 1f79e0b05f4510348a3feec3097c5cd7, type: 3}
-      propertyPath: hitVFX
-      value: 
-      objectReference: {fileID: 1096644957810217638, guid: 09e6a634439e5cd41937bdccc79eb711, type: 3}
-    - target: {fileID: 2852940415155359817, guid: 1f79e0b05f4510348a3feec3097c5cd7, type: 3}
-      propertyPath: TakeDamageEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2852940415155359817, guid: 1f79e0b05f4510348a3feec3097c5cd7, type: 3}
       propertyPath: TakeDamageEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2061527423}
-    - target: {fileID: 2852940415155359817, guid: 1f79e0b05f4510348a3feec3097c5cd7, type: 3}
-      propertyPath: TakeDamageEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: UpdateHealthSlider
-      objectReference: {fileID: 0}
-    - target: {fileID: 2852940415155359817, guid: 1f79e0b05f4510348a3feec3097c5cd7, type: 3}
-      propertyPath: TakeDamageEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: GameUIManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 2852940415155359817, guid: 1f79e0b05f4510348a3feec3097c5cd7, type: 3}
-      propertyPath: TakeDamageEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 3333532086508188344, guid: 1f79e0b05f4510348a3feec3097c5cd7, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -3622,14 +3594,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[3]
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 4719618831385323020, guid: 1f79e0b05f4510348a3feec3097c5cd7, type: 3}
-      propertyPath: hitSFX
-      value: 
-      objectReference: {fileID: 8300000, guid: 9ba91d96192151a42a2b66cf458ca1f9, type: 3}
-    - target: {fileID: 4719618831385323020, guid: 1f79e0b05f4510348a3feec3097c5cd7, type: 3}
-      propertyPath: hitVFX
-      value: 
-      objectReference: {fileID: 1096644957810217638, guid: 09e6a634439e5cd41937bdccc79eb711, type: 3}
     - target: {fileID: 5485408038255509353, guid: 1f79e0b05f4510348a3feec3097c5cd7, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -3642,10 +3606,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[2]
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 5485408038255509353, guid: 1f79e0b05f4510348a3feec3097c5cd7, type: 3}
-      propertyPath: m_Materials.Array.data[3]
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 7506837602444339979, guid: 1f79e0b05f4510348a3feec3097c5cd7, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -3656,10 +3616,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7506837602444339979, guid: 1f79e0b05f4510348a3feec3097c5cd7, type: 3}
       propertyPath: m_Materials.Array.data[2]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7506837602444339979, guid: 1f79e0b05f4510348a3feec3097c5cd7, type: 3}
-      propertyPath: m_Materials.Array.data[3]
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8899193254894162261, guid: 1f79e0b05f4510348a3feec3097c5cd7, type: 3}

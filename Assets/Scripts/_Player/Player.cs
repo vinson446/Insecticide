@@ -18,6 +18,8 @@ public class Player : MonoBehaviour, IDamageable<int>, IKillable
     public float MaxStamina => maxStamina;
     [SerializeField] float staminaUsageMultiplier;
     [SerializeField] float staminaRecoveryMultiplier;
+    [SerializeField] float staminaRecoveryTime;
+    bool recoveringStamina;
 
     [Header("Events")]
     public UnityEvent TakeDamageEvent;
@@ -40,6 +42,7 @@ public class Player : MonoBehaviour, IDamageable<int>, IKillable
     // local references
     PlayerMovementController playerMovementController;
     PlayerActionController playerActionController;
+    public PlayerActionController PlayerActionController => playerActionController;
     CharacterController charController;
     AudioSource audioSource;
 
@@ -79,18 +82,30 @@ public class Player : MonoBehaviour, IDamageable<int>, IKillable
     public void PlayShootEffects(int weapIndex)
     {
         shootVFXs[weapIndex].Play();
+
+        switch (weapIndex)
+        {
+            case 0:
+                audioSource.pitch = 1;
+                break;
+            case 1:
+                audioSource.pitch = 0.75f;
+                break;
+            case 2:
+                audioSource.pitch = 1.25f;
+                break;
+        }
         audioSource.PlayOneShot(shootSFX);
     }
 
     public void PlayNoAmmoSFX()
     {
+        audioSource.pitch = 0.5f;
         audioSource.PlayOneShot(noAmmoSFX);
     }
 
     public void TakeDamage(int damageTaken)
     {
-        print($"Player took {damageTaken} damage");
-
         currentHealth -= damageTaken;
 
         TakeDamageEvent.Invoke();
@@ -103,6 +118,19 @@ public class Player : MonoBehaviour, IDamageable<int>, IKillable
     {
         print("Player died");
     }
+
+    public void RecoverAmmo(int rifleAmmoAmt, int shotgunAmmoAmt)
+    {
+        if (playerActionController.WeapIndex == 0)
+            playerActionController.CurrentWeap.CurrentAmmo += rifleAmmoAmt;
+        else if (playerActionController.WeapIndex == 1)
+            playerActionController.CurrentWeap.CurrentAmmo += shotgunAmmoAmt;
+
+        if (playerActionController.CurrentWeap.CurrentAmmo > playerActionController.CurrentWeap.MaxAmmo)
+            playerActionController.CurrentWeap.CurrentAmmo = playerActionController.CurrentWeap.MaxAmmo;
+
+        gameUIManager.UpdateAmmo();
+    }
     #endregion
 
     #region Movement Effects
@@ -111,24 +139,42 @@ public class Player : MonoBehaviour, IDamageable<int>, IKillable
         currentStamina -= staminaUsageMultiplier * Time.deltaTime;
 
         if (currentStamina < 0)
+        {
+            if (!recoveringStamina)
+                StartCoroutine(RecoveringStaminaCoroutine());
+
             currentStamina = 0;
+        }
 
         gameUIManager.UpdateStaminaSlider();
     }
 
     void RecoverStamina()
     {
-        currentStamina += staminaRecoveryMultiplier * Time.deltaTime;
+        if (!recoveringStamina)
+        {
+            currentStamina += staminaRecoveryMultiplier * Time.deltaTime;
 
-        if (currentStamina > maxStamina)
-            currentStamina = maxStamina;
+            if (currentStamina > maxStamina)
+                currentStamina = maxStamina;
 
-        gameUIManager.UpdateStaminaSlider();
+            gameUIManager.UpdateStaminaSlider();
+        }
+    }
+
+    IEnumerator RecoveringStaminaCoroutine()
+    {
+        recoveringStamina = true;
+
+        yield return new WaitForSeconds(staminaRecoveryTime);
+
+        recoveringStamina = false;
     }
 
     void PlayFootstepsSound()
     {
         audioSource.clip = moveSFX;
+        audioSource.pitch = 1;
         audioSource.Play();
 
         // walking

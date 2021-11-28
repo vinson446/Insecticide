@@ -9,7 +9,11 @@ public abstract class Interactable : MonoBehaviour
         gameObject.layer = 11;
     }
 
+    /*
     public abstract void OnInteract();
     public abstract void OnFocus();
     public abstract void OnUnfocus();
+    */
+
+    public abstract void PickUp(Collider c);
 }

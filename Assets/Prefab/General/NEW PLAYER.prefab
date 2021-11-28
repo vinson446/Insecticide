@@ -506,12 +506,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+        m_TargetAssemblyTypeName: GameUIManager, Assembly-CSharp
+        m_MethodName: UpdateHealthSlider
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -6382,8 +6382,8 @@ MonoBehaviour:
   maxAmmo: 60
   damage: 30
   fireRate: 1
-  hitVFX: {fileID: 0}
-  hitSFX: {fileID: 0}
+  hitVFX: {fileID: 1096644957810217638, guid: 09e6a634439e5cd41937bdccc79eb711, type: 3}
+  hitSFX: {fileID: 8300000, guid: 9ba91d96192151a42a2b66cf458ca1f9, type: 3}
 --- !u!95 &5626365491100665230
 Animator:
   serializedVersion: 3
@@ -6991,7 +6991,7 @@ MonoBehaviour:
   maxAmmo: 360
   damage: 3
   fireRate: 6
-  hitVFX: {fileID: 0}
+  hitVFX: {fileID: 1096644957810217638, guid: 09e6a634439e5cd41937bdccc79eb711, type: 3}
   hitSFX: {fileID: 8300000, guid: 9ba91d96192151a42a2b66cf458ca1f9, type: 3}
 --- !u!95 &4409222171830645139
 Animator:
@@ -7260,8 +7260,8 @@ MonoBehaviour:
   maxAmmo: 9999
   damage: 1
   fireRate: 3
-  hitVFX: {fileID: 0}
-  hitSFX: {fileID: 0}
+  hitVFX: {fileID: 1096644957810217638, guid: 09e6a634439e5cd41937bdccc79eb711, type: 3}
+  hitSFX: {fileID: 8300000, guid: 9ba91d96192151a42a2b66cf458ca1f9, type: 3}
 --- !u!95 &2301547640623401600
 Animator:
   serializedVersion: 3
