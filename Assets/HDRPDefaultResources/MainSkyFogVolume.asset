@@ -239,7 +239,7 @@ MonoBehaviour:
   m_AdvancedMode: 0
   maxShadowDistance:
     m_OverrideState: 1
-    m_Value: 107.6
+    m_Value: 330
     min: 0
   directionalTransmissionMultiplier:
     m_OverrideState: 1
@@ -303,7 +303,7 @@ MonoBehaviour:
     showEyeDropper: 1
   tint:
     m_OverrideState: 1
-    m_Value: {r: 1, g: 1, b: 1, a: 1}
+    m_Value: {r: 0.43867922, g: 1, b: 0.48342225, a: 1}
     hdr: 1
     showAlpha: 0
     showEyeDropper: 1
