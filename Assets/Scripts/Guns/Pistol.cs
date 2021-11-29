@@ -15,7 +15,7 @@ public class Pistol : Gun
         {
             IDamageable<int> damageable = hit.transform.GetComponentInParent<IDamageable<int>>();
 
-            if (damageable != null)
+            if (damageable != null && hit.transform.tag != "Player")
                 damageable.TakeDamage(Damage);
 
             if (hitVFX != null)
