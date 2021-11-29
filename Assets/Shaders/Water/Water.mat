@@ -78,11 +78,11 @@ Material:
     m_Floats:
     - Vector1_1C8FEA19: 1
     - Vector1_50C74F87: 0.12
-    - Vector1_5DE38BA8: 0.244
-    - Vector1_712C90A3: 4
-    - Vector1_C8CD7BB7: 0.1
-    - Vector1_EBF894A3: 1.1
-    - Vector1_F8D9205E: 1
+    - Vector1_5DE38BA8: 0.224
+    - Vector1_712C90A3: 1
+    - Vector1_C8CD7BB7: 1
+    - Vector1_EBF894A3: 1
+    - Vector1_F8D9205E: 0
     - _AddPrecomputedVelocity: 0
     - _AlphaClip: 0
     - _AlphaCutoffEnable: 0
