@@ -159,8 +159,8 @@ public class PlayerActionController : MonoBehaviour
                 return;
             }
 
-            nextTimeToShoot = Time.time + 1 / fireRate;
-            currentWeap.Shoot();
+            nextTimeToShoot = Time.time + 1 / (fireRate + player.BaseFireRate);
+            currentWeap.Shoot(player.BaseDamage);
             ammo -= 1;
 
             playerAnimController.PlayShootingAnimation();

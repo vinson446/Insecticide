@@ -9,37 +9,17 @@ public class Pistol : Gun
         base.Awake();
     }
 
-    public override void Shoot()
+    public override void Shoot(int increment)
     {
-        if (Physics.Raycast(playerCamController.PlayerCam.transform.position, playerCamController.PlayerCam.transform.forward, out RaycastHit hit, 1000))
+        if (Physics.Raycast(playerCamController.PlayerCam.transform.position, playerCamController.PlayerCam.transform.forward, out RaycastHit hit, range))
         {
             IDamageable<int> damageable = hit.transform.GetComponentInParent<IDamageable<int>>();
 
             if (damageable != null && hit.transform.tag != "Player")
-                damageable.TakeDamage(Damage);
+                damageable.TakeDamage(Damage + increment);
 
             if (hitVFX != null)
                 Instantiate(hitVFX, hit.point, Quaternion.identity);
         }
-    }
-
-    protected override void PlayGunFireAnimation()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    protected override void PlayGunFireVFX()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    protected override void PlayGunFireSFX()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    protected override void PlayNoAmmoSFX()
-    {
-        throw new System.NotImplementedException();
     }
 }

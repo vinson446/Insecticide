@@ -6,6 +6,16 @@ using UnityEngine.VFX;
 
 public class Player : MonoBehaviour, IDamageable<int>, IKillable
 {
+    [Header("Game Parameters")]
+    [SerializeField] int level;
+    [SerializeField] int exp;
+    [SerializeField] int baseDamage;
+    public int BaseDamage => baseDamage;
+    [SerializeField] float baseFireRate;
+    public float BaseFireRate => baseFireRate;
+    [SerializeField] int damageIncrement;
+    [SerializeField] float fireRateIncrement;
+
     [Header("Player Parameters")]
     [SerializeField] float currentHealth;
     public float CurrentHealth => currentHealth;
@@ -27,24 +37,30 @@ public class Player : MonoBehaviour, IDamageable<int>, IKillable
     [Header("Effects - VFX")]
     [SerializeField] VisualEffect[] shootVFXs;
 
+    [SerializeField] GameObject runVFX;
+    bool isRunning;
+
     [Header("Effects - SFX")]
     [SerializeField] AudioClip shootSFX;
     [SerializeField] AudioClip noAmmoSFX;
 
     [SerializeField] AudioClip takeDamageSFX;
-    [SerializeField] AudioClip deathSFX;
 
     [SerializeField] AudioClip moveSFX;
     [SerializeField] float walkingStepTimer;
     [SerializeField] float runningStepTimer;
+    [SerializeField] AudioClip jumpSound;
     bool takeStep = true;
+
+    [SerializeField] AudioSource playerAudioSource;
+    [SerializeField] AudioSource gunAudioSource;
 
     // local references
     PlayerMovementController playerMovementController;
     PlayerActionController playerActionController;
     public PlayerActionController PlayerActionController => playerActionController;
+    PlayerKeybinds playerKeybinds;
     CharacterController charController;
-    AudioSource audioSource;
 
     GameUIManager gameUIManager;
 
@@ -54,8 +70,9 @@ public class Player : MonoBehaviour, IDamageable<int>, IKillable
     {
         playerMovementController = GetComponent<PlayerMovementController>();
         playerActionController = GetComponent<PlayerActionController>();
+        playerKeybinds = GetComponent<PlayerKeybinds>();
         charController = GetComponent<CharacterController>();
-        audioSource = GetComponent<AudioSource>();
+        playerAudioSource = GetComponent<AudioSource>();
 
         gameUIManager = FindObjectOfType<GameUIManager>();
 
@@ -67,7 +84,10 @@ public class Player : MonoBehaviour, IDamageable<int>, IKillable
 
     private void Update()
     {
-        if (charController.isGrounded && charController.velocity.magnitude > 2 && takeStep)
+        if (Input.GetKeyDown(KeyCode.H))
+            TakeDamage(-50);
+
+        if (charController.isGrounded && charController.velocity.magnitude > 2 && takeStep && !Input.GetKey(playerKeybinds.JumpKey))
         {
             PlayFootstepsSound();
         }
@@ -78,6 +98,33 @@ public class Player : MonoBehaviour, IDamageable<int>, IKillable
             RecoverStamina();
     }
 
+    public void GainExp(int xp)
+    {
+        exp += xp;
+
+        // update ui
+
+        if (exp >= 100)
+        {
+            int remainder = exp - 100;
+            exp = remainder;
+
+            LevelUp();
+        }
+    }
+
+    void LevelUp()
+    {
+        level++;
+
+        baseDamage += damageIncrement;
+        baseFireRate += fireRateIncrement;
+
+        // update ui
+
+        // update animation times
+    }
+
     #region Combat Effects
     public void PlayShootEffects(int weapIndex)
     {
@@ -86,22 +133,26 @@ public class Player : MonoBehaviour, IDamageable<int>, IKillable
         switch (weapIndex)
         {
             case 0:
-                audioSource.pitch = 1;
+                gunAudioSource.pitch = 1;
+                gunAudioSource.volume = 0.2f;
                 break;
             case 1:
-                audioSource.pitch = 0.75f;
+                gunAudioSource.pitch = 0.75f;
+                gunAudioSource.volume = 0.2f;
                 break;
             case 2:
-                audioSource.pitch = 1.25f;
+                gunAudioSource.pitch = 1.25f;
+                gunAudioSource.volume = 0.2f;
                 break;
         }
-        audioSource.PlayOneShot(shootSFX);
+        gunAudioSource.PlayOneShot(shootSFX);
     }
 
     public void PlayNoAmmoSFX()
     {
-        audioSource.pitch = 0.5f;
-        audioSource.PlayOneShot(noAmmoSFX);
+        gunAudioSource.pitch = 0.5f;
+        gunAudioSource.volume = 0.2f;
+        gunAudioSource.PlayOneShot(noAmmoSFX);
     }
 
     public void TakeDamage(int damageTaken)
@@ -138,6 +189,12 @@ public class Player : MonoBehaviour, IDamageable<int>, IKillable
     {
         currentStamina -= staminaUsageMultiplier * Time.deltaTime;
 
+        if (!isRunning)
+        {
+            isRunning = true;
+            runVFX.SetActive(true);
+        }
+
         if (currentStamina < 0)
         {
             if (!recoveringStamina)
@@ -151,6 +208,12 @@ public class Player : MonoBehaviour, IDamageable<int>, IKillable
 
     void RecoverStamina()
     {
+        if (isRunning)
+        {
+            isRunning = false;
+            runVFX.SetActive(false);
+        }
+
         if (!recoveringStamina)
         {
             currentStamina += staminaRecoveryMultiplier * Time.deltaTime;
@@ -173,9 +236,10 @@ public class Player : MonoBehaviour, IDamageable<int>, IKillable
 
     void PlayFootstepsSound()
     {
-        audioSource.clip = moveSFX;
-        audioSource.pitch = 1;
-        audioSource.Play();
+        playerAudioSource.clip = moveSFX;
+        playerAudioSource.volume = 0.2f;
+        playerAudioSource.pitch = Random.Range(0.95f, 1.05f);
+        playerAudioSource.Play();
 
         // walking
         if (!playerMovementController.IsSprinting)
@@ -196,6 +260,13 @@ public class Player : MonoBehaviour, IDamageable<int>, IKillable
         yield return new WaitForSeconds(walkingStepTimer);
 
         takeStep = true;
+    }
+
+    public void PlayJumpSound()
+    {
+        playerAudioSource.pitch = Random.Range(0.95f, 1.05f);
+        playerAudioSource.volume = 1;
+        playerAudioSource.PlayOneShot(jumpSound);
     }
     #endregion
 }

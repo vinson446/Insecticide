@@ -101,7 +101,11 @@ public class PlayerMovementController : MonoBehaviour
     void HandleJump()
     {
         if (canJumpNow)
+        {
             moveDir.y = jumpForce;
+
+            player.PlayJumpSound();
+        }
     }
 
     void HandleCrouch()

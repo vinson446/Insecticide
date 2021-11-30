@@ -13,6 +13,7 @@ public abstract class Gun : MonoBehaviour
     public int Damage { get => damage; set => damage = value; }
     [SerializeField] float fireRate;
     public float FireRate { get => fireRate; set => fireRate = value; }
+    [SerializeField] protected float range;
 
     [Header("Effects")]
     [SerializeField] protected GameObject hitVFX;
@@ -26,13 +27,5 @@ public abstract class Gun : MonoBehaviour
         playerCamController = GetComponentInParent<PlayerCameraController>();
     }
 
-    public abstract void Shoot();
-
-    protected abstract void PlayGunFireAnimation();
-
-    protected abstract void PlayGunFireVFX();
-
-    protected abstract void PlayGunFireSFX();
-
-    protected abstract void PlayNoAmmoSFX();
+    public abstract void Shoot(int increment);
 }
