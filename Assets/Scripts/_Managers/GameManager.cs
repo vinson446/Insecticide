@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,10 +14,12 @@ public class GameManager : MonoBehaviour
     [Header("Debugger")]
     [SerializeField] int neededScoreForThisStage = 500;
 
+    GameUIManager gameUIManager;
     SpawnManager spawnManager;
 
     void Awake()
     {
+        gameUIManager = GetComponent<GameUIManager>();
         spawnManager = GetComponent<SpawnManager>();
     }
 
@@ -30,6 +33,7 @@ public class GameManager : MonoBehaviour
     public void IncreaseScore(int points)
     {
         score += points;
+        gameUIManager.UpdateScoreText(score);
 
         if (score >= neededScoreForThisStage)
         {
@@ -40,9 +44,25 @@ public class GameManager : MonoBehaviour
     void IncreaseStageNum()
     {
         stageNum++;
-        spawnManager.SpawnRate++;
+        spawnManager.SpawnRate *= stageNum;
 
-        int tmp = neededScoreForThisStage;
-        neededScoreForThisStage = stageNum * tmp;
+        neededScoreForThisStage *= stageNum;
+
+        gameUIManager.UpdateStageText(stageNum);
+    }
+
+    public void GoToMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    public void ReplayGame()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }

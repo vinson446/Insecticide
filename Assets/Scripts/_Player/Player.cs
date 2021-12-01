@@ -11,6 +11,8 @@ public class Player : MonoBehaviour, IDamageable<int>, IKillable
     public int Level => level;
     [SerializeField] int exp;
     public int Exp => exp;
+    [SerializeField] int maxExp;
+    public int MaxExp => maxExp;
     [SerializeField] int baseDamage;
     public int BaseDamage => baseDamage;
     [SerializeField] float baseFireRate;
@@ -64,6 +66,7 @@ public class Player : MonoBehaviour, IDamageable<int>, IKillable
     PlayerKeybinds playerKeybinds;
     CharacterController charController;
 
+    GameManager gameManager;
     GameUIManager gameUIManager;
 
     Coroutine footstepsCoroutine;
@@ -76,6 +79,7 @@ public class Player : MonoBehaviour, IDamageable<int>, IKillable
         charController = GetComponent<CharacterController>();
         playerAudioSource = GetComponent<AudioSource>();
 
+        gameManager = FindObjectOfType<GameManager>();
         gameUIManager = FindObjectOfType<GameUIManager>();
 
         currentHealth = maxHealth;
@@ -107,7 +111,7 @@ public class Player : MonoBehaviour, IDamageable<int>, IKillable
     {
         exp += xp;
 
-        if (exp >= 100)
+        if (exp >= maxExp)
         {
             int remainder = exp - 100;
             exp = remainder;
@@ -121,11 +125,13 @@ public class Player : MonoBehaviour, IDamageable<int>, IKillable
     void LevelUp()
     {
         level++;
+        maxExp += maxExp;
 
         baseDamage += damageIncrement;
         baseFireRate += fireRateIncrement;
 
         gameUIManager.UpdateLevelText();
+        gameUIManager.UpdateExpSlider();
         gameUIManager.UpdateStats();
 
         // update animation times
@@ -173,7 +179,7 @@ public class Player : MonoBehaviour, IDamageable<int>, IKillable
 
     public void Die()
     {
-        print("Player died");
+        gameManager.GoToMenu();
     }
 
     public void RecoverAmmo(int rifleAmmoAmt, int shotgunAmmoAmt)

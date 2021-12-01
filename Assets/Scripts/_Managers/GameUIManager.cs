@@ -69,6 +69,7 @@ public class GameUIManager : MonoBehaviour
 
     public void UpdateExpSlider()
     {
+        expSlider.maxValue = player.MaxExp;
         expSlider.value = player.Exp;
     }
 

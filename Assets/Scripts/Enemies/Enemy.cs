@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour, IDamageable<int>, IKillable
     [SerializeField] int currentHealth;
     [SerializeField] int maxHealth;
     [SerializeField] int exp;
+    [SerializeField] int score;
 
     [Header("Combat Parameters")]
     [SerializeField] int damage;
@@ -25,6 +26,7 @@ public class Enemy : MonoBehaviour, IDamageable<int>, IKillable
     [SerializeField] float stopRange;
 
     [Header("Effects")]
+    [SerializeField] AudioClip attackSFX;
     [SerializeField] AudioClip deathSFX;
 
     Animator animator;
@@ -44,9 +46,9 @@ public class Enemy : MonoBehaviour, IDamageable<int>, IKillable
         gameManager = FindObjectOfType<GameManager>();
         player = FindObjectOfType<Player>();
 
+        IncreaseStats();
+
         currentHealth = maxHealth;
-        damage *= gameManager.StageNum;
-        moveSpeed += gameManager.StageNum - 1;
     }
 
     private void Update()
@@ -62,6 +64,14 @@ public class Enemy : MonoBehaviour, IDamageable<int>, IKillable
         {
             agent.speed = 0;
         }
+    }
+
+    void IncreaseStats()
+    {
+        maxHealth *= gameManager.StageNum;
+        exp *= gameManager.StageNum;
+        damage *= gameManager.StageNum;
+        moveSpeed *= gameManager.StageNum;
     }
 
     void MoveTowardsPlayer()
@@ -82,8 +92,6 @@ public class Enemy : MonoBehaviour, IDamageable<int>, IKillable
 
     public void TakeDamage(int damageTaken)
     {
-        Debug.Log($"Enemy Ant took {damageTaken} damage", gameObject);
-
         currentHealth -= damageTaken;
 
         if (currentHealth <= 0)
@@ -101,8 +109,6 @@ public class Enemy : MonoBehaviour, IDamageable<int>, IKillable
 
     public void Die()
     {
-        Debug.Log("Enemy Ant died", gameObject);
-
         // play death sound
         if (audioSource != null)
         {
@@ -112,6 +118,7 @@ public class Enemy : MonoBehaviour, IDamageable<int>, IKillable
         }
 
         player.GainExp(exp);
+        gameManager.IncreaseScore(score);
 
         Collider[] colls = GetComponentsInChildren<Collider>();
         foreach (Collider c in colls)

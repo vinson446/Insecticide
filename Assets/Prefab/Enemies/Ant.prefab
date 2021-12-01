@@ -47,15 +47,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc5a65895e4bf064fafdc408242e8459, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 20
-  maxHealth: 20
+  currentHealth: 30
+  maxHealth: 30
   exp: 5
-  damage: 3
+  score: 10
+  damage: 5
   atkSpeed: 1
   atkRange: 1.5
   atkTransformPoint: {fileID: 8530132643666815847}
-  moveSpeed: 4
-  stopRange: 4
+  moveSpeed: 5
+  rotSpeed: 5
+  stopRange: 5
+  attackSFX: {fileID: 0}
   deathSFX: {fileID: 0}
 --- !u!195 &8530132642906554690
 NavMeshAgent:
