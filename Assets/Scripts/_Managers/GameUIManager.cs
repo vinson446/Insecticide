@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class GameUIManager : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class GameUIManager : MonoBehaviour
 
     [Header("Game Over")]
     [SerializeField] GameObject endPanel;
+    [SerializeField] Image hurtImage;
 
     Player player;
 
@@ -44,6 +46,17 @@ public class GameUIManager : MonoBehaviour
         UpdateAmmo();
     }
 
+    public void Hurt()
+    {
+        StartCoroutine(HurtCoroutine());
+    }
+
+    IEnumerator HurtCoroutine()
+    {
+        hurtImage.DOFade(0.75f, 0.5f);
+        yield return new WaitForSeconds(0.5f);
+        hurtImage.DOFade(0, 0.5f);
+    }
 
     public void UpdateHealthSlider()
     {
