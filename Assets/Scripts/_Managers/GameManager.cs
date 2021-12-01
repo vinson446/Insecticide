@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
     void IncreaseStageNum()
     {
         stageNum++;
+        spawnManager.SpawnRate++;
 
         int tmp = neededScoreForThisStage;
         neededScoreForThisStage = stageNum * tmp;

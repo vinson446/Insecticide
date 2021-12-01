@@ -6,6 +6,7 @@ public class SpawnManager : MonoBehaviour
 {
     [Header("Spawner Parameters")]
     [SerializeField] float spawnRate;
+    public float SpawnRate { get => spawnRate; set => spawnRate = value; }
     [SerializeField] int bossChance;
     float nextTimeToSpawn;
 

@@ -10,7 +10,9 @@ public class EnemyAttackTrigger : MonoBehaviour
 
     void Awake()
     {
-        coll = GetComponent<SphereCollider>();
+        enemy = GetComponentInParent<Enemy>();
+
+        coll = GetComponentInChildren<SphereCollider>();
         coll.radius = enemy.AtkRange;
 
         enemy = GetComponentInParent<Enemy>();

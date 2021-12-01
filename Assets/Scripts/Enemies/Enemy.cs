@@ -21,25 +21,32 @@ public class Enemy : MonoBehaviour, IDamageable<int>, IKillable
 
     [Header("Movement Parameters")]
     [SerializeField] int moveSpeed;
+    [SerializeField] float rotSpeed;
     [SerializeField] float stopRange;
 
     [Header("Effects")]
     [SerializeField] AudioClip deathSFX;
 
+    Animator animator;
     NavMeshAgent agent;
     AudioSource audioSource;
 
+    GameManager gameManager;
     Player player;
 
     private void Awake()
     {
+        animator = GetComponentInChildren<Animator>();
         agent = GetComponentInChildren<NavMeshAgent>();
         agent.speed = moveSpeed;
         audioSource = GetComponent<AudioSource>();
 
+        gameManager = FindObjectOfType<GameManager>();
         player = FindObjectOfType<Player>();
 
         currentHealth = maxHealth;
+        damage *= gameManager.StageNum;
+        moveSpeed += gameManager.StageNum - 1;
     }
 
     private void Update()
@@ -69,7 +76,7 @@ public class Enemy : MonoBehaviour, IDamageable<int>, IKillable
         if (dir != Vector3.zero)
         {
             Quaternion lookRot = Quaternion.LookRotation(dir);
-            transform.rotation = Quaternion.Slerp(transform.rotation, lookRot, Time.deltaTime * 0.1f);
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRot, rotSpeed * Time.deltaTime * 0.1f);
         }
     }
 
@@ -106,18 +113,14 @@ public class Enemy : MonoBehaviour, IDamageable<int>, IKillable
 
         player.GainExp(exp);
 
-        Renderer[] rends = GetComponentsInChildren<Renderer>();
-        foreach (Renderer r in rends)
+        Collider[] colls = GetComponentsInChildren<Collider>();
+        foreach (Collider c in colls)
         {
-            r.enabled = false;
+            c.enabled = false;
         }
-        Destroy(gameObject, 3);
-    }
+        animator.CrossFadeInFixedTime("Death", 0.1f);
 
-    public void LevelUp(int stageNum)
-    {
-        damage *= stageNum;
-        moveSpeed *= stageNum;
+        Destroy(gameObject, 3);
     }
 
     private void OnDrawGizmosSelected()
