@@ -9,7 +9,7 @@ TerrainLayer:
   m_Name: RockCliff
   m_DiffuseTexture: {fileID: 2800000, guid: 9aea7aa03484a5041bc4c5f800b2e587, type: 3}
   m_NormalMapTexture: {fileID: 2800000, guid: 4d40fb17ddde2ef44bf0fc533a4aaf63, type: 3}
-  m_MaskMapTexture: {fileID: 0}
+  m_MaskMapTexture: {fileID: 2800000, guid: cf6d53aa97ae22d4999cce78b1c68698, type: 3}
   m_TileSize: {x: 10, y: 10}
   m_TileOffset: {x: 0, y: 0}
   m_Specular: {r: 0, g: 0, b: 0, a: 0}
@@ -18,5 +18,5 @@ TerrainLayer:
   m_NormalScale: 1
   m_DiffuseRemapMin: {x: 0, y: 0, z: 0, w: 0}
   m_DiffuseRemapMax: {x: 1, y: 1, z: 1, w: 1}
-  m_MaskMapRemapMin: {x: 0, y: 0, z: 0, w: 0}
-  m_MaskMapRemapMax: {x: 1, y: 1, z: 1, w: 1}
+  m_MaskMapRemapMin: {x: 0, y: 0, z: 0, w: 0.07362608}
+  m_MaskMapRemapMax: {x: 0, y: 0.17959511, z: 1, w: 0.15777017}
