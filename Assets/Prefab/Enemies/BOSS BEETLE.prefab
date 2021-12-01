@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9112686164443133840}
   - component: {fileID: 2529701877356698698}
   - component: {fileID: 1931736687703766712}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BTL_leg_l_03_a
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 1443807409680968503}
   - component: {fileID: 4505404126048358309}
   - component: {fileID: 6800836750916994461}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BTL_head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -174,7 +174,7 @@ GameObject:
   - component: {fileID: 6589022580913402246}
   - component: {fileID: 3099993414354226339}
   - component: {fileID: 1461857124064150978}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BTL_leg_r_02_b.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -256,7 +256,7 @@ GameObject:
   - component: {fileID: 3113214828466414560}
   - component: {fileID: 4489115977452429606}
   - component: {fileID: 3805640534894184047}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BTL_leg_r_02_a.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -338,7 +338,7 @@ GameObject:
   - component: {fileID: 700634567379899690}
   - component: {fileID: 4892296496076811523}
   - component: {fileID: 1114596649649592058}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BTL_leg_l_02_a
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -420,7 +420,7 @@ GameObject:
   - component: {fileID: 2471793450734093258}
   - component: {fileID: 710519768018676572}
   - component: {fileID: 7142033156121827965}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BTL_base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -503,7 +503,7 @@ GameObject:
   - component: {fileID: 6624818338173057461}
   - component: {fileID: 346528763135473339}
   - component: {fileID: 9132204805175124302}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BTL_leg_l_01_b
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -585,7 +585,7 @@ GameObject:
   - component: {fileID: 1605475129088491821}
   - component: {fileID: 5544411916052369471}
   - component: {fileID: 6135684335596832282}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BTL_leg_r_01_a.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -667,7 +667,7 @@ GameObject:
   - component: {fileID: 6839168431193303225}
   - component: {fileID: 5566377352839529796}
   - component: {fileID: 5631123894209843790}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BTL_leg_r_02_claws.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -748,7 +748,7 @@ GameObject:
   - component: {fileID: 2168792576987944363}
   - component: {fileID: 2703880095593357455}
   - component: {fileID: 5985972987234457331}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Atk Point (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -763,7 +763,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4983459939474117113}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.50479996, y: -0.994, z: -4.98836}
+  m_LocalPosition: {x: -0.013, y: 0.489, z: 1.797}
   m_LocalScale: {x: 0.12, y: 0.12, z: 0.12}
   m_Children: []
   m_Father: {fileID: 7270613268330692588}
@@ -780,7 +780,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 3
+  m_Radius: 6
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5985972987234457331
 MonoBehaviour:
@@ -805,7 +805,7 @@ GameObject:
   - component: {fileID: 4413503915480224913}
   - component: {fileID: 8109211525365534841}
   - component: {fileID: 3570161412926069411}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BTL_leg_l_03_claws
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -886,7 +886,7 @@ GameObject:
   - component: {fileID: 5902280461160391074}
   - component: {fileID: 4228730646726971673}
   - component: {fileID: 4400653741160136562}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BTL_leg_r_03_b.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -968,7 +968,7 @@ GameObject:
   - component: {fileID: 4144661371917240743}
   - component: {fileID: 171460061672472212}
   - component: {fileID: 1157203449959562750}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BTL_leg_l_02_claws
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1049,7 +1049,7 @@ GameObject:
   - component: {fileID: 5132284107873145092}
   - component: {fileID: 2745920634517160032}
   - component: {fileID: 4187164314693637887}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BTL_leg_r_03_claws.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1130,7 +1130,7 @@ GameObject:
   - component: {fileID: 742905989525603442}
   - component: {fileID: 5704565453114976211}
   - component: {fileID: 9162744553265615468}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BTL_headHorn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1213,7 +1213,7 @@ GameObject:
   - component: {fileID: 7423795023401089890}
   - component: {fileID: 5890023087983676545}
   - component: {fileID: 5645149625848816444}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BTL_wing_l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1294,7 +1294,7 @@ GameObject:
   - component: {fileID: 4593148909554765172}
   - component: {fileID: 8293997080934383126}
   - component: {fileID: 6112782538902619144}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BTL_leg_l_01_a
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1376,7 +1376,7 @@ GameObject:
   - component: {fileID: 810189890814583328}
   - component: {fileID: 2810350638333628924}
   - component: {fileID: 7639362978117449468}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BTL_leg_l_02_b
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1458,7 +1458,7 @@ GameObject:
   - component: {fileID: 5182441848531854172}
   - component: {fileID: 7125668386540129005}
   - component: {fileID: 2723883509945046186}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BTL_leg_l_03_b
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1542,7 +1542,7 @@ GameObject:
   - component: {fileID: 6066577443504037357}
   - component: {fileID: 6066577443504037358}
   - component: {fileID: 7270613268330692590}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BOSS BEETLE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1576,8 +1576,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.0950367, y: 1.203801, z: 3.983709}
-  m_Center: {x: 0.00523653, y: 0.58925134, z: 0.23386383}
+  m_Size: {x: 1.0950367, y: 1.0125539, z: 3.9837093}
+  m_Center: {x: 0.005236499, y: 0.684876, z: 0.23386385}
 --- !u!82 &6066577443504037357
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1692,15 +1692,15 @@ MonoBehaviour:
   score: 100
   damage: 20
   atkSpeed: 1
-  atkRange: 3
+  atkRange: 6
   atkTransformPoint: {fileID: 2168792576987944363}
   chanceToDrop: 10
   pickups:
   - {fileID: 1573559614473253158, guid: f13565c830dfe9648bfb4bd4e42c57f8, type: 3}
   - {fileID: 3425198331633937155, guid: 80f6b8d4a5bfacf4591527baedbaadd3, type: 3}
-  moveSpeed: 10
+  moveSpeed: 5
   rotSpeed: 3
-  stopRange: 7
+  stopRange: 70
   attackSFX: {fileID: 8300000, guid: 5e008358d3106a549b316c0efa549ae1, type: 3}
   deathSFX: {fileID: 8300000, guid: e1ef9ed8e146c1648a15f8ec8bab3a9a, type: 3}
 --- !u!195 &7270613268330692590
@@ -1737,7 +1737,7 @@ GameObject:
   - component: {fileID: 6107737439666417933}
   - component: {fileID: 8297879696498705863}
   - component: {fileID: 3858737804051309778}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: bug_beetle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1843,7 +1843,7 @@ GameObject:
   - component: {fileID: 8223658454263403511}
   - component: {fileID: 1567430671578196053}
   - component: {fileID: 212882684883270039}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BTL_leg_r_03_a.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1925,7 +1925,7 @@ GameObject:
   - component: {fileID: 8163918241665884829}
   - component: {fileID: 1471004897889604629}
   - component: {fileID: 867263462635931888}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BTL_leg_l_01_claws
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2006,7 +2006,7 @@ GameObject:
   - component: {fileID: 1838133549279847709}
   - component: {fileID: 1665217928323849526}
   - component: {fileID: 3715207521720588680}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BTL_leg_r_01_claws.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2087,7 +2087,7 @@ GameObject:
   - component: {fileID: 6684355080233796384}
   - component: {fileID: 7524050345512253208}
   - component: {fileID: 1458110827556114717}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BTL_leg_r_01_b.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}

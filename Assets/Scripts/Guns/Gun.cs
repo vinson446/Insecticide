@@ -14,6 +14,7 @@ public abstract class Gun : MonoBehaviour
     [SerializeField] float fireRate;
     public float FireRate { get => fireRate; set => fireRate = value; }
     [SerializeField] protected float range;
+    [SerializeField] protected LayerMask hitMask;
 
     [Header("Effects")]
     [SerializeField] protected GameObject hitVFX;

@@ -11,7 +11,7 @@ public class AssaultRifle : Gun
 
     public override void Shoot(int increment)
     {
-        if (Physics.Raycast(playerCamController.PlayerCam.transform.position, playerCamController.PlayerCam.transform.forward, out RaycastHit hit, range))
+        if (Physics.Raycast(playerCamController.PlayerCam.transform.position, playerCamController.PlayerCam.transform.forward, out RaycastHit hit, range, hitMask))
         {
             IDamageable<int> damageable = hit.transform.GetComponentInParent<IDamageable<int>>();
 
