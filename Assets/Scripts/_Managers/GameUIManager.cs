@@ -23,6 +23,9 @@ public class GameUIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI stageText;
     [SerializeField] TextMeshProUGUI scoreText;
 
+    [Header("Game Over")]
+    [SerializeField] GameObject endPanel;
+
     Player player;
 
     void Awake()
@@ -87,5 +90,15 @@ public class GameUIManager : MonoBehaviour
     public void UpdateScoreText(int score)
     {
         scoreText.text = score.ToString();
+    }
+
+    public void ShowDeathScreen()
+    {
+        Time.timeScale = 0;
+
+        endPanel.SetActive(true);
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 }

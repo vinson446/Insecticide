@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
     {
         stageNum++;
         spawnManager.SpawnRate *= stageNum;
+        spawnManager.SpawnCap *= stageNum;
 
         neededScoreForThisStage *= stageNum;
 

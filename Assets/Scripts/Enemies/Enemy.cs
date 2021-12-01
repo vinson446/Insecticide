@@ -17,6 +17,8 @@ public class Enemy : MonoBehaviour, IDamageable<int>, IKillable
     [SerializeField] float atkRange;
     public float AtkRange => atkRange;
     [SerializeField] Transform atkTransformPoint;
+    [SerializeField] int chanceToDrop;
+    [SerializeField] GameObject[] pickups;
     bool canAttack;
     float nextTimeToAttack;
 
@@ -24,6 +26,7 @@ public class Enemy : MonoBehaviour, IDamageable<int>, IKillable
     [SerializeField] int moveSpeed;
     [SerializeField] float rotSpeed;
     [SerializeField] float stopRange;
+    bool isInMovingAnim;
 
     [Header("Effects")]
     [SerializeField] AudioClip attackSFX;
@@ -34,6 +37,7 @@ public class Enemy : MonoBehaviour, IDamageable<int>, IKillable
     AudioSource audioSource;
 
     GameManager gameManager;
+    SpawnManager spawnManager;
     Player player;
 
     private void Awake()
@@ -44,6 +48,7 @@ public class Enemy : MonoBehaviour, IDamageable<int>, IKillable
         audioSource = GetComponent<AudioSource>();
 
         gameManager = FindObjectOfType<GameManager>();
+        spawnManager = FindObjectOfType<SpawnManager>();
         player = FindObjectOfType<Player>();
 
         IncreaseStats();
@@ -62,8 +67,14 @@ public class Enemy : MonoBehaviour, IDamageable<int>, IKillable
         }
         else
         {
+            isInMovingAnim = false;
             agent.speed = 0;
         }
+    }
+
+    public void ResetMovingFlag()
+    {
+        isInMovingAnim = false;
     }
 
     void IncreaseStats()
@@ -77,6 +88,12 @@ public class Enemy : MonoBehaviour, IDamageable<int>, IKillable
     void MoveTowardsPlayer()
     {
         agent.SetDestination(player.transform.position);
+
+        if (!isInMovingAnim)
+        {
+            animator.CrossFadeInFixedTime("Move", 0.1f);
+            isInMovingAnim = true;
+        }
     }
 
     void RotateTowardsPlayer()
@@ -103,7 +120,13 @@ public class Enemy : MonoBehaviour, IDamageable<int>, IKillable
         if (Time.time >= nextTimeToAttack)
         {
             nextTimeToAttack = Time.time + 1 / atkSpeed;
+
             player.TakeDamage(damage);
+
+            audioSource.volume = 0.2f;
+            audioSource.pitch = Random.Range(0.95f, 1.05f);
+            audioSource.PlayOneShot(attackSFX);
+            animator.CrossFadeInFixedTime("Attack", 0.1f);
         }
     }
 
@@ -119,6 +142,14 @@ public class Enemy : MonoBehaviour, IDamageable<int>, IKillable
 
         player.GainExp(exp);
         gameManager.IncreaseScore(score);
+        spawnManager.NumEnemiesRightNow--;
+
+        int drop = Random.Range(0, 100);
+        if (drop < chanceToDrop)
+        {
+            int pick = Random.Range(0, 2);
+            Instantiate(pickups[pick], transform.position, transform.rotation);
+        }
 
         Collider[] colls = GetComponentsInChildren<Collider>();
         foreach (Collider c in colls)
