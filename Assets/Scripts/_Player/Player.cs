@@ -8,7 +8,9 @@ public class Player : MonoBehaviour, IDamageable<int>, IKillable
 {
     [Header("Game Parameters")]
     [SerializeField] int level;
+    public int Level => level;
     [SerializeField] int exp;
+    public int Exp => exp;
     [SerializeField] int baseDamage;
     public int BaseDamage => baseDamage;
     [SerializeField] float baseFireRate;
@@ -87,6 +89,9 @@ public class Player : MonoBehaviour, IDamageable<int>, IKillable
         if (Input.GetKeyDown(KeyCode.H))
             TakeDamage(-50);
 
+        if (Input.GetKeyDown(KeyCode.P))
+            GainExp(20);
+
         if (charController.isGrounded && charController.velocity.magnitude > 2 && takeStep && !Input.GetKey(playerKeybinds.JumpKey))
         {
             PlayFootstepsSound();
@@ -102,8 +107,6 @@ public class Player : MonoBehaviour, IDamageable<int>, IKillable
     {
         exp += xp;
 
-        // update ui
-
         if (exp >= 100)
         {
             int remainder = exp - 100;
@@ -111,6 +114,8 @@ public class Player : MonoBehaviour, IDamageable<int>, IKillable
 
             LevelUp();
         }
+
+        gameUIManager.UpdateExpSlider();
     }
 
     void LevelUp()
@@ -120,7 +125,8 @@ public class Player : MonoBehaviour, IDamageable<int>, IKillable
         baseDamage += damageIncrement;
         baseFireRate += fireRateIncrement;
 
-        // update ui
+        gameUIManager.UpdateLevelText();
+        gameUIManager.UpdateStats();
 
         // update animation times
     }
