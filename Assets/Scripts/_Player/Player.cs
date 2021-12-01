@@ -40,6 +40,8 @@ public class Player : MonoBehaviour, IDamageable<int>, IKillable
 
     [Header("Effects - VFX")]
     [SerializeField] VisualEffect[] shootVFXs;
+    [SerializeField] GameObject lvlUpVFX;
+    [SerializeField] GameObject healVFX;
 
     [SerializeField] GameObject runVFX;
     bool isRunning;
@@ -49,6 +51,8 @@ public class Player : MonoBehaviour, IDamageable<int>, IKillable
     [SerializeField] AudioClip noAmmoSFX;
 
     [SerializeField] AudioClip takeDamageSFX;
+
+    [SerializeField] AudioClip lvlUpSFX;
 
     [SerializeField] AudioClip moveSFX;
     [SerializeField] float walkingStepTimer;
@@ -130,11 +134,25 @@ public class Player : MonoBehaviour, IDamageable<int>, IKillable
         baseDamage += damageIncrement;
         baseFireRate += fireRateIncrement;
 
+        playerAudioSource.pitch = Random.Range(0.95f, 1.05f);
+        playerAudioSource.volume = 0.2f;
+        playerAudioSource.PlayOneShot(lvlUpSFX);
+
+        lvlUpVFX.SetActive(true);
+        StartCoroutine(TurnOffEffect(lvlUpVFX));
+        
         gameUIManager.UpdateLevelText();
         gameUIManager.UpdateExpSlider();
         gameUIManager.UpdateStats();
 
         // update animation times
+    }
+
+    IEnumerator TurnOffEffect(GameObject o)
+    {
+        yield return new WaitForSeconds(3);
+
+        o.SetActive(false);
     }
 
     #region Combat Effects
@@ -171,15 +189,31 @@ public class Player : MonoBehaviour, IDamageable<int>, IKillable
     {
         currentHealth -= damageTaken;
 
-        TakeDamageEvent.Invoke();
+        playerAudioSource.pitch = Random.Range(0.95f, 1.05f);
+        playerAudioSource.volume = 0.2f;
+        playerAudioSource.PlayOneShot(takeDamageSFX);
 
+        TakeDamageEvent.Invoke();
+        
         if (currentHealth <= 0)
             Die();
+
+        if (damageTaken < 0)
+        {
+            healVFX.SetActive(true);
+            StartCoroutine(TurnOffEffect(healVFX));
+        }
     }
 
     public void Die()
     {
-        gameManager.GoToMenu();
+        gameUIManager.ShowDeathScreen();
+
+        PlayerCameraController playerCameraController = GetComponent<PlayerCameraController>();
+        playerCameraController.enabled = false;
+
+        playerActionController.enabled = false;
+        this.enabled = false;
     }
 
     public void RecoverAmmo(int rifleAmmoAmt, int shotgunAmmoAmt)

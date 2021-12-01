@@ -103,6 +103,7 @@ public class PlayerActionController : MonoBehaviour
 
             gameUIManager.UpdateStats();
             gameUIManager.UpdateAmmo();
+            gameUIManager.UpdateAmmoImage(0);
         }
         else if (Input.GetKeyDown(playerKeybinds.Weap2Key))
         {
@@ -123,6 +124,7 @@ public class PlayerActionController : MonoBehaviour
 
             gameUIManager.UpdateStats();
             gameUIManager.UpdateAmmo();
+            gameUIManager.UpdateAmmoImage(1);
         }
         else if (Input.GetKeyDown(playerKeybinds.Weap3Key))
         {
@@ -143,6 +145,7 @@ public class PlayerActionController : MonoBehaviour
 
             gameUIManager.UpdateStats();
             gameUIManager.UpdateAmmo();
+            gameUIManager.UpdateAmmoImage(2);
         }
     }
 
