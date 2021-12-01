@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_Ant
+  m_Name: M_AntEmission
   m_Shader: {fileID: -6465566751694194690, guid: f57e47e62ebd9894484962ef498e46e1, type: 3}
   m_ShaderKeywords: _ALPHATEST_ON _DISABLE_SSR_TRANSPARENT
   m_LightmapFlags: 4
@@ -29,10 +29,6 @@ Material:
     m_TexEnvs:
     - Texture2D_5bd094d185a649f9a83292a15328f4dc:
         m_Texture: {fileID: 2800000, guid: 597b01b55e931c14a8955385a13b3f77, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_62eb1a4e5a40414cac6af1e1d8590f3b:
-        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_78469f365eef4a4fa07143c372a59231:
@@ -145,7 +141,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Vector1_3fead6604da54efe816dfe401967639b: 0.01
-    - Vector1_fd63c0aa23c2479683d1e29ad0a52be2: 300
+    - Vector1_fd63c0aa23c2479683d1e29ad0a52be2: 30
     - _AORemapMax: 1
     - _AORemapMin: 0
     - _ATDistance: 1
