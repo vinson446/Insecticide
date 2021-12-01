@@ -56,7 +56,7 @@ public class Enemy : MonoBehaviour, IDamageable<int>, IKillable
         currentHealth = maxHealth;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (!(Vector3.Distance(transform.position, player.transform.position) <= stopRange))
         {
@@ -70,11 +70,6 @@ public class Enemy : MonoBehaviour, IDamageable<int>, IKillable
             isInMovingAnim = false;
             agent.speed = 0;
         }
-    }
-
-    public void ResetMovingFlag()
-    {
-        isInMovingAnim = false;
     }
 
     void IncreaseStats()
