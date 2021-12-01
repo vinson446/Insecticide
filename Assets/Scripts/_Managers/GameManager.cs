@@ -5,35 +5,33 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [Header("Current")]
-    [SerializeField] int stageNum;
+    [SerializeField] int stageNum = 1;
     public int StageNum => stageNum;
     [SerializeField] int score;
     public int Score => score;
 
     [Header("Debugger")]
-    [SerializeField] int neededScoreForNextStage;
-    [SerializeField] int stageMultiplier;
+    [SerializeField] int neededScoreForThisStage = 500;
 
     SpawnManager spawnManager;
 
     void Awake()
     {
         spawnManager = GetComponent<SpawnManager>();
-
-        neededScoreForNextStage = stageNum * stageMultiplier;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+            IncreaseStageNum();
     }
 
     public void IncreaseScore(int points)
     {
         score += points;
 
-        if (score >= neededScoreForNextStage)
+        if (score >= neededScoreForThisStage)
         {
             IncreaseStageNum();
         }
@@ -42,6 +40,8 @@ public class GameManager : MonoBehaviour
     void IncreaseStageNum()
     {
         stageNum++;
-        neededScoreForNextStage = stageNum * stageMultiplier;
+
+        int tmp = neededScoreForThisStage;
+        neededScoreForThisStage = stageNum * tmp;
     }
 }
