@@ -26,8 +26,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha0))
-            IncreaseStageNum();
+
     }
 
     public void IncreaseScore(int points)
@@ -44,8 +43,6 @@ public class GameManager : MonoBehaviour
     void IncreaseStageNum()
     {
         stageNum++;
-        spawnManager.SpawnRate *= stageNum;
-        spawnManager.SpawnCap *= stageNum;
 
         neededScoreForThisStage *= stageNum;
 

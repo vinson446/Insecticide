@@ -94,12 +94,6 @@ public class Player : MonoBehaviour, IDamageable<int>, IKillable
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.H))
-            TakeDamage(-50);
-
-        if (Input.GetKeyDown(KeyCode.P))
-            GainExp(20);
-
         if (charController.isGrounded && charController.velocity.magnitude > 2 && takeStep && !Input.GetKey(playerKeybinds.JumpKey))
         {
             PlayFootstepsSound();
@@ -135,7 +129,7 @@ public class Player : MonoBehaviour, IDamageable<int>, IKillable
         baseFireRate += fireRateIncrement;
 
         playerAudioSource.pitch = Random.Range(0.95f, 1.05f);
-        playerAudioSource.volume = 0.2f;
+        playerAudioSource.volume = 1f;
         playerAudioSource.PlayOneShot(lvlUpSFX);
 
         lvlUpVFX.SetActive(true);
@@ -189,10 +183,6 @@ public class Player : MonoBehaviour, IDamageable<int>, IKillable
     {
         currentHealth -= damageTaken;
 
-        playerAudioSource.pitch = Random.Range(0.95f, 1.05f);
-        playerAudioSource.volume = 0.2f;
-        playerAudioSource.PlayOneShot(takeDamageSFX);
-
         TakeDamageEvent.Invoke();
         
         if (currentHealth <= 0)
@@ -202,6 +192,14 @@ public class Player : MonoBehaviour, IDamageable<int>, IKillable
         {
             healVFX.SetActive(true);
             StartCoroutine(TurnOffEffect(healVFX));
+        }
+        else
+        {
+            playerAudioSource.pitch = Random.Range(0.95f, 1.05f);
+            playerAudioSource.volume = 0.2f;
+            playerAudioSource.PlayOneShot(takeDamageSFX);
+
+            gameUIManager.Hurt();
         }
     }
 

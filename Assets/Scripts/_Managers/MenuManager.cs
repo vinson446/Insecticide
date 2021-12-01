@@ -13,6 +13,7 @@ public class MenuManager : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
 
+        Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }

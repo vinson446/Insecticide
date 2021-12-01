@@ -67,14 +67,18 @@ public class SpawnManager : MonoBehaviour
         if (spawnBoss < bossChance)
         {
             if (spawnLocations[rand].gameObject.activeInHierarchy)
+            {
                 Instantiate(enemyObjs[1], spawnLocations[rand].position, transform.rotation);
+                numEnemiesRightNow++;
+            }
         }
         else
         {
             if (spawnLocations[rand].gameObject.activeInHierarchy)
+            {
                 Instantiate(enemyObjs[0], spawnLocations[rand].position, transform.rotation);
+                numEnemiesRightNow++;
+            }
         }
-
-        numEnemiesRightNow++;
     }
 }
