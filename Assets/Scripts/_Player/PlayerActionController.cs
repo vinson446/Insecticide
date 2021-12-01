@@ -101,6 +101,7 @@ public class PlayerActionController : MonoBehaviour
             currentWeap.gameObject.SetActive(true);
             SetWeaponStats();
 
+            gameUIManager.UpdateStats();
             gameUIManager.UpdateAmmo();
         }
         else if (Input.GetKeyDown(playerKeybinds.Weap2Key))
@@ -120,6 +121,7 @@ public class PlayerActionController : MonoBehaviour
             currentWeap.gameObject.SetActive(true);
             SetWeaponStats();
 
+            gameUIManager.UpdateStats();
             gameUIManager.UpdateAmmo();
         }
         else if (Input.GetKeyDown(playerKeybinds.Weap3Key))
@@ -139,6 +141,7 @@ public class PlayerActionController : MonoBehaviour
             currentWeap.gameObject.SetActive(true);
             SetWeaponStats();
 
+            gameUIManager.UpdateStats();
             gameUIManager.UpdateAmmo();
         }
     }
