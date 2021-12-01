@@ -60,11 +60,11 @@ public class SpawnManager : MonoBehaviour
 
     void SpawnEnemy()
     {
-        bossChance = Random.Range(0, 100);
+        int spawnBoss = Random.Range(0, 100);
 
         int rand = Random.Range(0, spawnLocations.Length);
 
-        if (bossChance == 1)
+        if (spawnBoss < bossChance)
         {
             if (spawnLocations[rand].gameObject.activeInHierarchy)
                 Instantiate(enemyObjs[1], spawnLocations[rand].position, transform.rotation);

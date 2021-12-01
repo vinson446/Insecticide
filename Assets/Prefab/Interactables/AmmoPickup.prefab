@@ -190,8 +190,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickUpSFX: {fileID: 8300000, guid: 75a62bfd9ba8c714bba1e07873beacd3, type: 3}
-  rifleAmmoAmt: 60
-  shotgunAmmoAmt: 20
+  rifleAmmoAmt: 120
+  shotgunAmmoAmt: 60
 --- !u!82 &4688239891004893963
 AudioSource:
   m_ObjectHideFlags: 0

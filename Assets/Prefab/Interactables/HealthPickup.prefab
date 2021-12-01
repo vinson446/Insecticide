@@ -80,7 +80,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickUpSFX: {fileID: 8300000, guid: 03bbb78eb27d8b24d8b94893887fc42d, type: 3}
-  healthAmt: 20
+  healthAmt: 25
 --- !u!82 &2186920997111713064
 AudioSource:
   m_ObjectHideFlags: 0
