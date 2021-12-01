@@ -13,8 +13,15 @@ public class Enemy : MonoBehaviour, IDamageable<int>, IKillable
     [Header("Combat Parameters")]
     [SerializeField] int damage;
     [SerializeField] float atkSpeed;
-    [SerializeField] int moveSpeed;
+    [SerializeField] float atkRange;
+    public float AtkRange => atkRange;
+    [SerializeField] Transform atkTransformPoint;
     bool canAttack;
+    float nextTimeToAttack;
+
+    [Header("Movement Parameters")]
+    [SerializeField] int moveSpeed;
+    [SerializeField] float stopRange;
 
     [Header("Effects")]
     [SerializeField] AudioClip deathSFX;
@@ -37,8 +44,17 @@ public class Enemy : MonoBehaviour, IDamageable<int>, IKillable
 
     private void Update()
     {
-        MoveTowardsPlayer();
-        RotateTowardsPlayer();
+        if (!(Vector3.Distance(transform.position, player.transform.position) <= stopRange))
+        {
+            agent.speed = moveSpeed;
+
+            MoveTowardsPlayer();
+            RotateTowardsPlayer();
+        }
+        else
+        {
+            agent.speed = 0;
+        }
     }
 
     void MoveTowardsPlayer()
@@ -67,6 +83,15 @@ public class Enemy : MonoBehaviour, IDamageable<int>, IKillable
             Die();
     }
 
+    public void Attack()
+    {
+        if (Time.time >= nextTimeToAttack)
+        {
+            nextTimeToAttack = Time.time + 1 / atkSpeed;
+            player.TakeDamage(damage);
+        }
+    }
+
     public void Die()
     {
         Debug.Log("Enemy Ant died", gameObject);
@@ -87,5 +112,17 @@ public class Enemy : MonoBehaviour, IDamageable<int>, IKillable
             r.enabled = false;
         }
         Destroy(gameObject, 3);
+    }
+
+    public void LevelUp(int stageNum)
+    {
+        damage *= stageNum;
+        moveSpeed *= stageNum;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(atkTransformPoint.position, atkRange);
     }
 }
